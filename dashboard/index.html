@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — which pre-token protocol is worth farming next</title>
+<link rel="stylesheet" href="radar.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="kicker">TOKEN LAUNCH RADAR · ROUND 2</p>
+    <h1>Which pre-token protocol is worth farming next?</h1>
+    <p class="lede">Every protocol below records no token on DefiLlama, ranked by what its launch
+    would be worth if the market priced it like the live tokens of its own category.
+    A protocol “records no token” — that is the record, not proof it has none.</p>
+    <p class="model" id="model-note"></p>
+    <dl class="stats" id="stats"></dl>
+  </div>
+</header>
+
+<main>
+  <section class="spotlight" id="spotlight" aria-label="Top three">
+    <h2>Spotlight — the top three</h2>
+    <div class="spot-cards" id="spot-cards"></div>
+  </section>
+
+  <section class="chart" aria-label="Top ten by implied value">
+    <h2>Top ten by implied value</h2>
+    <div id="chart"></div>
+  </section>
+
+  <section class="controls" aria-label="Filter and sort the board">
+    <label>Search <input id="q" type="search" placeholder="protocol name or slug…" autocomplete="off"></label>
+    <label>Category <select id="cat"><option value="">All categories</option></select></label>
+    <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+    <label>Scope
+      <select id="scope">
+        <option value="all">All ranked</option>
+        <option value="watchlist">Watchlist only</option>
+        <option value="early">Early finds only</option>
+      </select>
+    </label>
+    <label>Trend
+      <select id="trend">
+        <option value="">Any trend</option>
+        <option>Surging</option>
+        <option>Rising</option>
+        <option>Steady</option>
+        <option>Fading</option>
+        <option>Falling</option>
+      </select>
+    </label>
+    <label>Sort
+      <select id="sort">
+        <option value="value">Implied value ↓</option>
+        <option value="tvl">TVL ↓</option>
+        <option value="growth">7-day growth ↓</option>
+        <option value="seasoning">Time tokenless ↓</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </label>
+    <p class="count" id="count"></p>
+  </section>
+
+  <nav class="tabs" aria-label="Views">
+    <button id="tab-board" class="tab active" type="button">Board</button>
+    <button id="tab-live" class="tab" type="button">Live-token reference</button>
+    <button id="tab-bench" class="tab" type="button">Category benchmarks</button>
+  </nav>
+
+  <section id="view-board" class="view">
+    <table class="board">
+      <thead><tr>
+        <th data-sort="rank">#</th>
+        <th data-sort="name">Protocol</th>
+        <th data-sort="category">Category</th>
+        <th>Chains</th>
+        <th data-sort="tvl">TVL</th>
+        <th data-sort="growth">7d</th>
+        <th>Signal</th>
+        <th data-sort="multiple">Multiple</th>
+        <th data-sort="value">Implied value</th>
+        <th>Scope</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="hint">Click a row for its detail view: the full audit line, the value breakdown and the farm plan written from its own figures.</p>
+  </section>
+
+  <section id="view-live" class="view hidden">
+    <p class="panel-note">Protocols whose token already trades. They are never ranked — they are the
+    reference the multiples are taken from, and only those with at least $10M of TVL of their own
+    price a category. The top 120 by market cap are shown.</p>
+    <table class="board">
+      <thead><tr><th>Protocol</th><th>Category</th><th>TVL</th><th>Market cap</th><th>MCap / TVL</th></tr></thead>
+      <tbody id="live-rows"></tbody>
+    </table>
+  </section>
+
+  <section id="view-bench" class="view hidden">
+    <p class="panel-note">One median multiple per category, from the live tokens in that category
+    with at least $10M TVL. A category with fewer than three such tokens borrows the overall
+    median — those rows are marked as fallbacks, with the sample they had.</p>
+    <table class="board">
+      <thead><tr><th>Category</th><th>Live tokens ≥ $10M TVL</th><th>Median multiple</th><th>Basis</th></tr></thead>
+      <tbody id="bench-rows"></tbody>
+    </table>
+  </section>
+
+  <section id="detail" class="detail hidden" aria-label="Protocol detail"></section>
+</main>
+
+<footer>
+  <p>Snapshot <span id="as-of"></span> · watchlist floor $50,000,000 TVL · Implied values are this
+  entry's own claim, never make.fun's, and never a prediction that a token will be issued.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="radar.js"></script>
+</body>
+</html>
