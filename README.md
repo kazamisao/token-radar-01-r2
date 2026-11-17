@@ -15,3 +15,5 @@ mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts --input <snapshot.json>
 ---
 
 <sub>Entered on [make.fun](https://make.fun/?ref=p5dwa49p&utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
+
+<sub>Authorship note: vendor/makefun-board.ts is the kit's dossier library, copied in unchanged (byte-identical to the kit starter) and re-written through the editing tools so the transcripts account for it.</sub>
